@@ -446,8 +446,8 @@
   bottom: 20px;
   z-index: 999;
 
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
 
   border-radius: 50%;
   border: none;
@@ -463,15 +463,16 @@
 </head>
 <body>
 
-  <audio autoplay loop>
+  <audio id="bg-music" autoplay loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button id="music-btn">♪</button>
+<button id="music-btn">❚❚</button>
 
 <script>
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
+
 music.volume = 0.4;
 
 btn.addEventListener("click", async () => {
