@@ -491,66 +491,39 @@
 </head>
 <body>
 
-<audio id="bg-music" autoplay loop>
+<audio id="bg-music" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button id="music-btn">❚❚</button>
+<button id="music-btn" type="button">♪</button>
 <div id="music-hint">Нажмите для музыки</div>
   
 <script>
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
+const hint = document.getElementById("music-hint");
 
 music.volume = 0.4;
-
-// Кнопка всегда стартует как "музыка выключена"
 btn.textContent = "♪";
 
-// Пытаемся запустить автоматически
 window.addEventListener("load", async () => {
   try {
     await music.play();
     btn.textContent = "❚❚";
+    hint.classList.remove("show");
   } catch (e) {
-    // Браузер запретил autoplay — это нормально
     btn.textContent = "♪";
+    hint.classList.add("show");
     console.log("Autoplay blocked:", e);
   }
 });
 
-  const hint = document.getElementById("music-hint");
-
-window.addEventListener("load", async () => {
-  try {
-    await music.play();
-  } catch {
-    hint.classList.add("show");
-  }
-});
-
 btn.addEventListener("click", async () => {
   try {
     if (music.paused) {
       await music.play();
       btn.textContent = "❚❚";
-    } else {
-      music.pause();
-      btn.textContent = "♪";
-    }
-
-    hint.classList.remove("show");
-
-  } catch(e){
-    console.error(e);
-  }
-});
-
-btn.addEventListener("click", async () => {
-  try {
-    if (music.paused) {
-      await music.play();
-      btn.textContent = "❚❚";
+      hint.classList.remove("show");
     } else {
       music.pause();
       btn.textContent = "♪";
