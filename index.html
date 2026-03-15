@@ -51,6 +51,8 @@
       background-size: cover;
       background-position: center 15%;
       animation: heroZoom 14s ease-out forwards;
+      background-position: center;
+      z-index: 0;
     }
 
     @keyframes heroZoom {
@@ -67,6 +69,7 @@
     rgba(0, 0, 0, 0.42) 63%,
     rgba(0, 0, 0, 0.5) 100%
       );
+      z-index: 1;
     }
     .hero-title {
       font-family: var(--serif);
