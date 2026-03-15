@@ -464,25 +464,29 @@
 <body>
 
   <audio id="bg-music" loop>
-  <source src="Sade - Paradise - Official - 1988 (audio-extractor.net).mp3" type="audio/mpeg">
+  <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-    <script>
+<button id="music-btn">♪</button>
+
+<script>
 const music = document.getElementById("bg-music");
 const btn = document.getElementById("music-btn");
 
-btn.addEventListener("click", () => {
-  if (music.paused) {
-    music.play();
-    btn.textContent = "❚❚";
-  } else {
-    music.pause();
-    btn.textContent = "♪";
+btn.addEventListener("click", async () => {
+  try {
+    if (music.paused) {
+      await music.play();
+      btn.textContent = "❚❚";
+    } else {
+      music.pause();
+      btn.textContent = "♪";
+    }
+  } catch (e) {
+    console.error("Музыка не запустилась:", e);
   }
 });
 </script>
-
-<button id="music-btn">♪</button>
   
 <!-- ═══ HERO ═══ -->
 <section class="hero">
